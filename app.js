@@ -100,16 +100,3 @@ function validateRequest() {
     var results = newProcess.main(startDate, endDate);
     console.log("the response: " + results);
 }
-
-/*    <h3>Date</h3>
-    <div id="startDate" style="width:50%"></div>
-
-    <h3>Time</h3>
-    <div id="startTime" style="width:50%"></div>
-
-    <h3>Clickable title</h3>
-    <div id="result" style="width:50%"></div>
-
-    <h3>Location</h3>
-    <div id="result" style="width:50%"></div>*/ 
-//# sourceMappingURL=app.js.map
