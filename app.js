@@ -43,13 +43,16 @@ var Greeter = (function () {
                         arrayOfEvents.push(arrayOfRes[i]);
                     }
                 }
+                console.log(arrayOfEvents);
+
+
                 for (var i = 0; i < arrayOfEvents.length; i++) {
                     // the following code analyses one item
                     var objectsParsed = arrayOfEvents[i].split("</div>");
                     // the following part parses start date
                     var timeAndDate = objectsParsed[1];
                     var newTime = timeAndDate.split("2017");
-                    console.log("currentTime: " + newTime[0]);
+                    //console.log("currentTime: " + newTime[0]);
                     var date = newTime[0];
                     var newDate = date.split('bwdescription');
                     var newNewDate = newDate[1].split(' ');
@@ -67,7 +70,7 @@ var Greeter = (function () {
                     var titleAndLink = objectsParsed[0];
                     var newLink = titleAndLink.split("<a");
                     finalLink = "<a" + newLink[1];
-                    console.log("test final link" + finalLink);
+                    //console.log("test final link" + finalLink);
 
                     var tempLinkTitle1 = finalLink.split("href=");
                     var tempLinkTitle2 = tempLinkTitle1[1];
@@ -77,29 +80,24 @@ var Greeter = (function () {
                     var tempLink2 = tempLink1.split("class");
 
                     var tempLink3 = tempLink2[0];
-                    console.log(tempTitle1);
-                    console.log(tempLink1);
+                    //console.log(tempTitle1);
+                    //console.log(tempLink1);
 
 
                     finalHTML = finalHTML + "&lt;td&gt;" + "&lt;a href=" + tempLink3 +"&gt;" + tempTitle1 + "&lt;/a&gt;" + "&lt;/td&gt;";
 
-                    /*<a href="http://www.calendar.events.ubc.ca:80/cal/event/eventView.do?
-                    subid=-1&amp;calPath=%2Fpublic%2FEvents+Calendar%2FSPPH+Internal&amp;
-                    guid=CAL-09d22401-5530bdc2-0155-326cee67-00000047myubc-team@interchange.
-                    ubc.ca&amp;recurrenceId=" class="bwitemlink" target="new">Faculty Meeting </a>*/
-
-
-
 
                     //the following part deals with location
-                    finalHTML = finalHTML + "&lt;td&gt;" + "See description" + "&lt;/td&gt;" + "&lt;/tr&gt;";
 
+                    if (arrayOfEvents[i].includes("Location:")) {
+                        var tempLoc = arrayOfEvents[i].split("Location:");
+                        var tempLoc2 = tempLoc[1];
+                        var tempLoc3 = tempLoc2.split("<br");
+                        var tempLoc4 = tempLoc3[0];
+                        finalHTML = finalHTML + "&lt;td&gt;" + tempLoc4 + "&lt;/td&gt;" + "&lt;/tr&gt;";
+                    }
 
-
-
-
-
-
+                    else finalHTML = finalHTML + "&lt;td&gt;" + "Sorry, we can't find it" + "&lt;/td&gt;" + "&lt;/tr&gt;";
 
                 } // end of for loop
                 coreBody.innerHTML = finalHTML;
