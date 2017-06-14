@@ -68,9 +68,39 @@ var Greeter = (function () {
                     var newLink = titleAndLink.split("<a");
                     finalLink = "<a" + newLink[1];
                     console.log("test final link" + finalLink);
-                    finalHTML = finalHTML + "&lt;td&gt;" + finalLink + "&lt;/td&gt;";
+
+                    var tempLinkTitle1 = finalLink.split("href=");
+                    var tempLinkTitle2 = tempLinkTitle1[1];
+                    var tempLinkTitle3 = tempLinkTitle2.split('new">');
+                    var tempTitle1 = tempLinkTitle3[1];
+                    var tempLink1 = tempLinkTitle3[0];
+                    var tempLink2 = tempLink1.split("class");
+
+                    var tempLink3 = tempLink2[0];
+                    console.log(tempTitle1);
+                    console.log(tempLink1);
+
+
+                    finalHTML = finalHTML + "&lt;td&gt;" + "&lt;a href=" + tempLink3 +"&gt;" + tempTitle1 + "&lt;/a&gt;" + "&lt;/td&gt;";
+
+                    /*<a href="http://www.calendar.events.ubc.ca:80/cal/event/eventView.do?
+                    subid=-1&amp;calPath=%2Fpublic%2FEvents+Calendar%2FSPPH+Internal&amp;
+                    guid=CAL-09d22401-5530bdc2-0155-326cee67-00000047myubc-team@interchange.
+                    ubc.ca&amp;recurrenceId=" class="bwitemlink" target="new">Faculty Meeting </a>*/
+
+
+
+
                     //the following part deals with location
                     finalHTML = finalHTML + "&lt;td&gt;" + "See description" + "&lt;/td&gt;" + "&lt;/tr&gt;";
+
+
+
+
+
+
+
+
                 } // end of for loop
                 coreBody.innerHTML = finalHTML;
             }
