@@ -28,7 +28,9 @@ var Greeter = (function () {
         var finalLink;
         var finalLoc;
         var arrayOfEvents = [];
-        var finalHTML = "";
+        var finalHTML = '&lt;h2 style="font-family: Verdana, Arial, Helvetica, sans serif; font-size: 18px;"&gt;&lt;span id="email_ 3" style="font-size: 14px;"&gt;Date Range&lt;br /&gt;&lt;/span&gt;&lt;/h2&gt;&lt;table border="1" ';
+        finalHTML = finalHTML + 'cellpadding="5" style="width: 100%; text-align: center;"&gt;';
+        finalHTML = finalHTML + "&lt;tbody&gt;";
         var coreBody;
         res.overrideMimeType('application/xml');
         res.onreadystatechange = function () {
@@ -100,6 +102,7 @@ var Greeter = (function () {
                     else finalHTML = finalHTML + "&lt;td&gt;" + "Sorry, we can't find it" + "&lt;/td&gt;" + "&lt;/tr&gt;";
 
                 } // end of for loop
+                finalHTML = finalHTML + "&lt;/tbody&gt;&lt;/table&gt;";
                 coreBody.innerHTML = finalHTML;
             }
         };
