@@ -82,8 +82,6 @@ var Greeter = (function () {
                     var tempLink2 = tempLink1.split("class");
 
                     var tempLink3 = tempLink2[0];
-                    //console.log(tempTitle1);
-                    //console.log(tempLink1);
 
 
                     finalHTML = finalHTML + "&lt;td&gt;" + "&lt;a href=" + tempLink3 +"&gt;" + tempTitle1 + "&lt;/a&gt;" + "&lt;/td&gt;";
